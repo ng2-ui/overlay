@@ -33,7 +33,6 @@ General Solution For Angular2 Overlay Elements
 
         <div id="window-loading" jui-overlay-of="window">
           Loading...
-          <button (click)="overlayManager.close('window-loading')">Close</button>
         </div>
         <button (click)="overlayManager.open('window-loading')">Show Loading For Window</button>
 
@@ -44,8 +43,9 @@ General Solution For Angular2 Overlay Elements
   * jui-overlay, Display inside overylay center-center positioned
   * jui-overlay-of="window", Display window overlay
   * jui-overlay-position="VERTICAL HORIZONTAL outside"
-     e.g., `jui-overlay-position="center center"` for loading sign
-     `jui-overlay-position="top center outside"` for tooltip
+     e.g.,   
+     `jui-overlay-position="center center"` for loading sign  
+     `jui-overlay-position="top center outside"` for tooltip  
 
      * VERTICAL positions: top,  middle, or bottom
      * HORIZONTAL positions: left,  center, or right
