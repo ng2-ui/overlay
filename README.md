@@ -1,6 +1,10 @@
 # ng2-overlay
 General Solution For Angular2 Overlay Elements
 
+<a href="https://plnkr.co/edit/Yq78qE?p=preview">
+  <img src="http://i.imgur.com/0qcxg8X.png" width="50% border="1" />
+</a>
+
 ## Install
 
 1. install ng2-overlay
