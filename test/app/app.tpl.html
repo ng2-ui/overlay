@@ -1,0 +1,72 @@
+<h3>Open Inside Overlay For Window - Modal</h3>
+<div id="window-loading" jui-overlay-of="window">
+  <div style="color:#fff">Loading</div>
+  <button (click)="overlayManager.close('window-loading')">Close</button>
+</div>
+<button (click)="overlayManager.open('window-loading')">Show Loading For Window</button>
+<br/>
+
+<h3>Open Inside Overlay For A DIV</h3>
+<div id="my-div" style="width: 400px; height: 100px; border: 1px solid #ccc;">
+  <button (click)="overlayManager.open('div-loading')">Show Loading For This Div</button>
+  <div id="div-loading" jui-overlay>
+    <div style="color:#fff">Loading</div>
+    <button (click)="overlayManager.close('div-loading')">Close</button>
+  </div>
+  My Div<br/>
+</div>
+
+<h3>Open Outside Overlay For A DIV</h3>
+
+<div id="top-ooutside" style="margin:20px 150px; width: 400px; height: 60px; border: 1px solid #ccc; text-align: center">
+  <div id="tl-overlay" style="border: 1px solid #ccc;"
+       jui-overlay-position="top left outside">Top Left (x)</div>
+
+  <div id="tc-overlay" style="border: 1px solid #ccc;"
+       jui-overlay-position="top center outside">Top Center (x)</div>
+
+  <div id="tr-overlay" style="border: 1px solid #ccc;"
+       jui-overlay-position="top right outside">Top Right (x)</div>
+  <button (mouseover)="overlayManager.open('tl-overlay')" (mouseout)="overlayManager.close('tl-overlay')">Show Overlay Top-Left Outside</button><br/>
+  <button
+      (mouseover)="overlayManager.open('tc-overlay')" (mouseout)="overlayManager.close('tc-overlay')">Show Overlay Top-Center Outside</button><br/>
+  <button
+      (mouseover)="overlayManager.open('tr-overlay')" (mouseout)="overlayManager.close('tr-overlay')">Show Overlay Top-Right Outside</button><br/>
+</div>
+
+<div id="bottom-outside" style="margin:20px 150px;width: 400px; height: 60px; border: 1px solid #ccc; text-align: center">
+  <div id="bl-overlay" style="border: 1px solid #ccc;"
+       jui-overlay-position="bottom left outside">Bottom Left (x)</div>
+
+  <div id="bc-overlay" style="border: 1px solid #ccc;"
+       jui-overlay-position="bottom center outside">Bottom Center (x)</div>
+
+  <div id="br-overlay" style="border: 1px solid #ccc;"
+       jui-overlay-position="bottom right outside">Bottom Right (x)</div>
+  <button (mouseover)="overlayManager.open('bl-overlay')" (mouseout)="overlayManager.close('bl-overlay')">Show Overlay Bottom-Left Outside</button><br/>
+  <button (mouseover)="overlayManager.open('bc-overlay')" (mouseout)="overlayManager.close('bc-overlay')">Show Overlay Bottom-Center Outside</button><br/>
+  <button (mouseover)="overlayManager.open('br-overlay')" (mouseout)="overlayManager.close('br-overlay')">Show Overlay Bottom-Right Outside</button><br/>
+</div>
+
+<div id="left-outside" style="margin:20px 150px;width: 400px; height: 60px; border: 1px solid #ccc; text-align: center">
+  <div id="lt-overlay" style="border: 1px solid #ccc;"
+       jui-overlay-position="left top outside">Left Top(x)</div>
+
+  <div id="lb-overlay" style="border: 1px solid #ccc;"
+       jui-overlay-position="left bottom outside">Left Bottom(x)</div>
+  <button (mouseover)="overlayManager.open('lt-overlay')" (mouseout)="overlayManager.close('lt-overlay')">Show Overlay Left-Top Outside</button><br/>
+  <button (mouseover)="overlayManager.open('lb-overlay')" (mouseout)="overlayManager.close('lb-overlay')">Show Overlay Left-Bottom Outside</button><br/>
+
+</div>
+
+<div style="position:relative">
+  <div id="right-outside" style="margin:20px 150px;width: 400px; height: 60px; border: 1px solid #ccc; text-align: center">
+    <div id="rt-overlay" style="border: 1px solid #ccc;"
+         jui-overlay-position="right top outside">Right Top</div>
+
+    <div id="rb-overlay" style="border: 1px solid #ccc;"
+         jui-overlay-position="right bottom outside">Right Bottom</div>
+    <button (mouseover)="overlayManager.open('rt-overlay')" (mouseout)="overlayManager.close('rt-overlay')">Show Overlay Right-Top Outside</button><br/>
+    <button (mouseover)="overlayManager.open('rb-overlay')" (mouseout)="overlayManager.close('rb-overlay')">Show Overlay Right-Bottom Outside</button><br/>
+  </div>
+</div>
