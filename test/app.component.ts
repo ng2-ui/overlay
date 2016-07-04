@@ -4,7 +4,7 @@ import { OverlayDirective, OverlayManager } from 'ng2-overlay';
 
 @Component({
   selector: 'my-app',
-  templateUrl: './app/app.tpl.html',
+  templateUrl: 'app.tpl.html',
   providers: [OverlayManager],
   directives: [OverlayDirective]
 })

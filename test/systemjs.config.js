@@ -1,29 +1,30 @@
-System.config({
-  //use typescript for compilation
-  transpiler: 'typescript',
-  //typescript compiler options
-  typescriptOptions: {
-    emitDecoratorMetadata: true
-  },
-  //map tells the System loader where to look for things
-  map: {
-    app: "./app",
-    '@angular': 'node_modules/@angular',
-    'rxjs': 'node_modules/rxjs',
-    //'rxjs': 'https://npmcdn.com/rxjs@5.0.0-beta.6'
-    // 'ng2-overlay': 'src'
-    'ng2-overlay': 'dist'
-  },
-  //packages defines our app package
-  packages: {
+(function(global) {
+  var map = {
+    app: ".",
+    '@angular': '../node_modules/@angular',
+    'rxjs': '../node_modules/rxjs'
+  };
+  var packages = {
     app: { main: './main.ts', defaultExtension: 'ts' },
     '@angular/core': { main: 'bundles/core.umd.js', defaultExtension: 'js' },
     '@angular/compiler': { main: 'bundles/compiler.umd.js', defaultExtension: 'js' },
     '@angular/common': { main: 'bundles/common.umd.js', defaultExtension: 'js' },
     '@angular/platform-browser-dynamic': { main: 'bundles/platform-browser-dynamic.umd.js', defaultExtension: 'js' },
     '@angular/platform-browser': { main: 'bundles/platform-browser.umd.js', defaultExtension: 'js' },
-    rxjs: { defaultExtension: 'js' },
-    // 'ng2-overlay':  { main: './index.ts', defaultExtension: 'ts' }
-    'ng2-overlay':  { main: 'index.js', defaultExtension: 'js' }
-  }
-});
+    rxjs: { defaultExtension: 'js' }
+  };
+
+  map['ng2-overlay'] = '../src';
+  packages['ng2-overlay'] = {main: 'index.ts', defaultExtension: 'ts'};
+  map['ng2-overlay'] = '../dist';
+  packages['ng2-overlay'] = {main: 'index.js', defaultExtension: 'js'};
+
+  System.config({
+    transpiler: 'typescript', //use typescript for compilation
+    typescriptOptions: {      //typescript compiler options
+      emitDecoratorMetadata: true
+    },
+    map: map,
+    packages: packages
+  });
+})(this);
