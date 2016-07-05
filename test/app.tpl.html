@@ -70,3 +70,9 @@
     <button (mouseover)="overlayManager.open('rb-overlay')" (mouseout)="overlayManager.close('rb-overlay')">Show Overlay Right-Bottom Outside</button><br/>
   </div>
 </div>
+
+<div id="top-cursor" style="margin:20px 150px;width: 400px; height: 60px; border: 1px solid #ccc; text-align: center">
+  <div id="cursor-overlay" style="border: 1px solid #ccc;" ng2-overlay-position="top cursor outside">Top Cursor</div>
+  <button (mouseover)="overlayManager.open('cursor-overlay', $event)"
+          (mouseout)="overlayManager.close('cursor-overlay')">Show Overlay On Cursor Position</button>
+</div>
