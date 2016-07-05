@@ -17,10 +17,10 @@ var OverlayManager = (function () {
     OverlayManager.prototype.register = function (overlay) {
         this.overlays[overlay.id] = overlay;
     };
-    OverlayManager.prototype.open = function (arg) {
+    OverlayManager.prototype.open = function (arg, event) {
         var overlay = typeof arg === 'string' ? this.overlays[arg] : arg;
         overlay.element.style.display = overlay.position.inside ? 'flex' : 'block';
-        overlay.positionIt();
+        overlay.positionIt(event);
     };
     OverlayManager.prototype.close = function (arg) {
         var overlay = typeof arg === 'string' ? this.overlays[arg] : arg;

@@ -11,10 +11,10 @@ export class OverlayManager {
     this.overlays[overlay.id] = overlay;
   }
 
-  open(arg: string | Overlay): void {
+  open(arg: string | Overlay, event: Event): void {
     let overlay: Overlay = typeof arg === 'string' ? this.overlays[arg] : arg;
     overlay.element.style.display = overlay.position.inside ? 'flex': 'block';
-    overlay.positionIt();
+    overlay.positionIt(event);
   }
 
   close(arg: string | Overlay): void {

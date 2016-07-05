@@ -10,12 +10,12 @@ var Overlay = (function () {
         this.windowOverlay = options.windowOverlay;
         this.position = this.getPositionProperty(options.position || 'center center');
     }
-    Overlay.prototype.positionIt = function () {
+    Overlay.prototype.positionIt = function (event) {
         if (this.position.inside) {
             this.positionItInside(this.position);
         }
         else {
-            this.positionItOutside(this.position);
+            this.positionItOutside(this.position, event);
         }
     };
     Overlay.prototype.getPositionProperty = function (positionStr) {
@@ -43,7 +43,7 @@ var Overlay = (function () {
         else {
             //adjust top/left to match to parentElement
             var parentEl = this.element.parentElement;
-            //works as a blocker 
+            //works as a blocker
             Object.assign(this.element.style, {
                 position: 'absolute',
                 // backgroundColor: 'transparent',
@@ -81,7 +81,7 @@ var Overlay = (function () {
                 break;
         }
     };
-    Overlay.prototype.positionItOutside = function (position) {
+    Overlay.prototype.positionItOutside = function (position, event) {
         //adjust top/left to match to parentElement
         var parentEl = this.element.parentElement;
         //works as guide line?
@@ -128,7 +128,45 @@ var Overlay = (function () {
             case Overlay.BOTTOM:
                 elToPosition.style.bottom = '0';
                 break;
+            case Overlay.CURSOR:
+                var mousePos = this.getMousePositionInElement(event, parentEl);
+                elToPosition.style.left = mousePos.x + 'px';
+                break;
         }
+    };
+    Overlay.prototype.getDocumentPosition = function (oElement) {
+        var posX = 0, posY = 0;
+        if (oElement.offsetParent) {
+            for (; oElement; oElement = oElement.offsetParent) {
+                posX += oElement.offsetLeft;
+                posY += oElement.offsetTop;
+            }
+            return { x: posX, y: posY };
+        }
+        else {
+            return { x: oElement['x'], y: oElement['y'] };
+        }
+    };
+    Overlay.prototype.getMousePositionInElement = function (evt, element) {
+        evt = evt || window.event;
+        var posX = 0, posY = 0;
+        var elPos = this.getDocumentPosition(element);
+        if (evt.pageX || evt.pageY) {
+            posX = evt.pageX;
+            posY = evt.pageY;
+        }
+        else if (evt.clientX || evt.clientY) {
+            posX = evt.clientX +
+                document.body.scrollLeft +
+                document.documentElement.scrollLeft;
+            posY = evt.clientY +
+                document.body.scrollTop +
+                document.documentElement.scrollTop;
+        }
+        return {
+            x: posX - elPos.x,
+            y: posY - elPos.y
+        };
     };
     Overlay.TOP = 11;
     Overlay.MIDDLE = 12;
@@ -136,6 +174,7 @@ var Overlay = (function () {
     Overlay.LEFT = 21;
     Overlay.CENTER = 22;
     Overlay.RIGHT = 23;
+    Overlay.CURSOR = 31;
     return Overlay;
 }());
 exports.Overlay = Overlay;

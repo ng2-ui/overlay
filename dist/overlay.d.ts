@@ -5,13 +5,16 @@ export declare class Overlay {
     static LEFT: number;
     static CENTER: number;
     static RIGHT: number;
+    static CURSOR: number;
     id: string;
     element: HTMLElement;
     windowOverlay: boolean;
     position: any;
     constructor(el: any, options?: any);
-    positionIt(): void;
+    positionIt(event?: Event): void;
     private getPositionProperty(positionStr);
     private positionItInside(position);
-    private positionItOutside(position);
+    private positionItOutside(position, event?);
+    private getDocumentPosition(oElement);
+    private getMousePositionInElement(evt, element);
 }

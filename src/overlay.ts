@@ -2,6 +2,7 @@
 export class Overlay {
   static TOP=11;  static MIDDLE=12; static BOTTOM=13;
   static LEFT=21; static CENTER=22; static RIGHT=23;
+  static CURSOR=31;
 
   id: string;
   element: HTMLElement;
@@ -17,11 +18,11 @@ export class Overlay {
     this.position = this.getPositionProperty(options.position || 'center center');
   }
 
-  positionIt() {
+  positionIt(event?: Event) {
     if (this.position.inside) {
       this.positionItInside(this.position);
     } else {
-      this.positionItOutside(this.position);
+      this.positionItOutside(this.position, event);
     }
   }
 
@@ -39,12 +40,12 @@ export class Overlay {
 
     return position;
   }
-  
+
   private positionItInside(position) {
 
     //top / left positioning
     if (this.windowOverlay) {
-      this.element.style.position = 'fixed'
+      this.element.style.position = 'fixed';
       //works as blocker
       Object.assign(this.element.style, {
         backgroundColor: 'rgba(0,0,0,0.2)',
@@ -55,7 +56,7 @@ export class Overlay {
       //adjust top/left to match to parentElement
       let parentEl = this.element.parentElement;
 
-      //works as a blocker 
+      //works as a blocker
       Object.assign(this.element.style, {
         position: 'absolute',
         // backgroundColor: 'transparent',
@@ -67,7 +68,7 @@ export class Overlay {
       });
 
     };
-    
+
     //horizontal position
     switch (position.horizontal) {
       case Overlay.LEFT:
@@ -91,10 +92,10 @@ export class Overlay {
 
   }
 
-  private positionItOutside(position) {
+  private positionItOutside(position: any, event?: Event) {
     //adjust top/left to match to parentElement
     let parentEl = this.element.parentElement;
-    
+
     //works as guide line?
     Object.assign(this.element.style, {
       position: 'absolute',
@@ -108,7 +109,7 @@ export class Overlay {
     let elToPosition: HTMLElement = <HTMLElement>(this.element.children[0]);
     elToPosition.style.position = 'absolute';
     elToPosition.style.pointerEvents = 'auto';
-    
+
     let childrenElBCR = elToPosition.getBoundingClientRect();
     let contentsWidth = childrenElBCR.width, contentsHeight = childrenElBCR.height;
     switch (position.vertical) {
@@ -121,16 +122,55 @@ export class Overlay {
       case Overlay.RIGHT:
         elToPosition.style.right = (contentsWidth * -1) + 'px'; break;
     }
-    
+
     switch (position.horizontal) {
-      case Overlay.CENTER:  
-        elToPosition.style.left =  (parentEl.offsetWidth - contentsWidth) / 2 + 'px'; 
+      case Overlay.CENTER:
+        elToPosition.style.left =  (parentEl.offsetWidth - contentsWidth) / 2 + 'px';
         break;
       case Overlay.LEFT:  elToPosition.style.left =  '0'; break;
       case Overlay.RIGHT: elToPosition.style.right = '0'; break;
       case Overlay.TOP: elToPosition.style.top = '0'; break;
       case Overlay.BOTTOM: elToPosition.style.bottom = '0'; break;
+      case Overlay.CURSOR:
+        let mousePos = this.getMousePositionInElement(<MouseEvent>event, parentEl);
+        elToPosition.style.left = mousePos.x + 'px'; break;
     }
-    
   }
+
+  private getDocumentPosition(oElement: HTMLElement): any {
+    let posX: number = 0, posY: number = 0;
+    if(oElement.offsetParent) {
+      for(;oElement; oElement = <HTMLElement>oElement.offsetParent) {
+        posX += oElement.offsetLeft;
+        posY += oElement.offsetTop;
+      }
+      return {x: posX, y: posY};
+    } else {
+      return {x: oElement['x'], y: oElement['y']};
+    }
+  }
+
+  private getMousePositionInElement(evt: MouseEvent, element: HTMLElement) {
+    evt = evt || <MouseEvent>window.event;
+
+    let posX: number = 0, posY: number = 0;
+    let elPos: any = this.getDocumentPosition(element);
+
+    if (evt.pageX || evt.pageY) {
+      posX = evt.pageX;
+      posY = evt.pageY;
+    } else if (evt.clientX || evt.clientY) {
+      posX = evt.clientX +
+        document.body.scrollLeft +
+        document.documentElement.scrollLeft;
+      posY = evt.clientY +
+        document.body.scrollTop +
+        document.documentElement.scrollTop;
+    }
+    return {
+      x: posX - elPos.x,
+      y: posY - elPos.y
+    }
+  }
+
 }
