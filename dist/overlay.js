@@ -1,4 +1,5 @@
 "use strict";
+var util_1 = require('./util');
 var Overlay = (function () {
     function Overlay(el, options) {
         options = options || {};
@@ -129,44 +130,15 @@ var Overlay = (function () {
                 elToPosition.style.bottom = '0';
                 break;
             case Overlay.CURSOR:
-                var mousePos = this.getMousePositionInElement(event, parentEl);
-                elToPosition.style.left = mousePos.x + 'px';
+                var mousePos = util_1.Util.getMousePositionInElement(event, parentEl);
+                if ((elToPosition.offsetWidth + event.pageX) > window.innerWidth) {
+                    elToPosition.style.left = (parentEl.offsetWidth - elToPosition.offsetWidth - 20) + 'px';
+                }
+                else {
+                    elToPosition.style.left = mousePos.x + 'px';
+                }
                 break;
         }
-    };
-    Overlay.prototype.getDocumentPosition = function (oElement) {
-        var posX = 0, posY = 0;
-        if (oElement.offsetParent) {
-            for (; oElement; oElement = oElement.offsetParent) {
-                posX += oElement.offsetLeft;
-                posY += oElement.offsetTop;
-            }
-            return { x: posX, y: posY };
-        }
-        else {
-            return { x: oElement['x'], y: oElement['y'] };
-        }
-    };
-    Overlay.prototype.getMousePositionInElement = function (evt, element) {
-        evt = evt || window.event;
-        var posX = 0, posY = 0;
-        var elPos = this.getDocumentPosition(element);
-        if (evt.pageX || evt.pageY) {
-            posX = evt.pageX;
-            posY = evt.pageY;
-        }
-        else if (evt.clientX || evt.clientY) {
-            posX = evt.clientX +
-                document.body.scrollLeft +
-                document.documentElement.scrollLeft;
-            posY = evt.clientY +
-                document.body.scrollTop +
-                document.documentElement.scrollTop;
-        }
-        return {
-            x: posX - elPos.x,
-            y: posY - elPos.y
-        };
     };
     Overlay.TOP = 11;
     Overlay.MIDDLE = 12;

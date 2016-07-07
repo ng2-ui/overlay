@@ -15,6 +15,4 @@ export declare class Overlay {
     private getPositionProperty(positionStr);
     private positionItInside(position);
     private positionItOutside(position, event?);
-    private getDocumentPosition(oElement);
-    private getMousePositionInElement(evt, element);
 }

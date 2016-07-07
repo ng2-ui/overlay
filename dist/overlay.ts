@@ -1,3 +1,4 @@
+import { Util } from './util';
 
 export class Overlay {
   static TOP=11;  static MIDDLE=12; static BOTTOM=13;
@@ -132,44 +133,13 @@ export class Overlay {
       case Overlay.TOP: elToPosition.style.top = '0'; break;
       case Overlay.BOTTOM: elToPosition.style.bottom = '0'; break;
       case Overlay.CURSOR:
-        let mousePos = this.getMousePositionInElement(<MouseEvent>event, parentEl);
-        elToPosition.style.left = mousePos.x + 'px'; break;
-    }
-  }
-
-  private getDocumentPosition(oElement: HTMLElement): any {
-    let posX: number = 0, posY: number = 0;
-    if(oElement.offsetParent) {
-      for(;oElement; oElement = <HTMLElement>oElement.offsetParent) {
-        posX += oElement.offsetLeft;
-        posY += oElement.offsetTop;
-      }
-      return {x: posX, y: posY};
-    } else {
-      return {x: oElement['x'], y: oElement['y']};
-    }
-  }
-
-  private getMousePositionInElement(evt: MouseEvent, element: HTMLElement) {
-    evt = evt || <MouseEvent>window.event;
-
-    let posX: number = 0, posY: number = 0;
-    let elPos: any = this.getDocumentPosition(element);
-
-    if (evt.pageX || evt.pageY) {
-      posX = evt.pageX;
-      posY = evt.pageY;
-    } else if (evt.clientX || evt.clientY) {
-      posX = evt.clientX +
-        document.body.scrollLeft +
-        document.documentElement.scrollLeft;
-      posY = evt.clientY +
-        document.body.scrollTop +
-        document.documentElement.scrollTop;
-    }
-    return {
-      x: posX - elPos.x,
-      y: posY - elPos.y
+        let mousePos = Util.getMousePositionInElement(<MouseEvent>event, parentEl);
+        if ( (elToPosition.offsetWidth + (<MouseEvent>event).pageX) > window.innerWidth) {
+          elToPosition.style.left = (parentEl.offsetWidth - elToPosition.offsetWidth - 20) + 'px';
+        } else {
+          elToPosition.style.left = mousePos.x + 'px';
+        }
+        break;
     }
   }
 
