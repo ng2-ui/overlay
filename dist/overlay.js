@@ -135,7 +135,7 @@ var Overlay = (function () {
                     elToPosition.style.left = (parentEl.offsetWidth - elToPosition.offsetWidth - 5) + 'px';
                 }
                 else if (mousePos.x < elToPosition.offsetWidth / 2) {
-                    elToPosition.style.left = mousePos.x + 'px';
+                    elToPosition.style.left = '0px';
                 }
                 else {
                     elToPosition.style.left = mousePos.x - elToPosition.offsetWidth / 2 + 'px';
