@@ -131,8 +131,8 @@ var Overlay = (function () {
                 break;
             case Overlay.CURSOR:
                 var mousePos = util_1.Util.getMousePositionInElement(event, parentEl);
-                if ((elToPosition.offsetWidth + event.pageX) > window.innerWidth) {
-                    elToPosition.style.left = (parentEl.offsetWidth - elToPosition.offsetWidth - 20) + 'px';
+                if ((mousePos.x + elToPosition.offsetWidth) > parentEl.offsetWidth) {
+                    elToPosition.style.left = (parentEl.offsetWidth - elToPosition.offsetWidth - 5) + 'px';
                 }
                 else {
                     elToPosition.style.left = mousePos.x + 'px';

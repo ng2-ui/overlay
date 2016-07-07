@@ -134,8 +134,8 @@ export class Overlay {
       case Overlay.BOTTOM: elToPosition.style.bottom = '0'; break;
       case Overlay.CURSOR:
         let mousePos = Util.getMousePositionInElement(<MouseEvent>event, parentEl);
-        if ( (elToPosition.offsetWidth + (<MouseEvent>event).pageX) > window.innerWidth) {
-          elToPosition.style.left = (parentEl.offsetWidth - elToPosition.offsetWidth - 20) + 'px';
+        if ( (mousePos.x + elToPosition.offsetWidth) > parentEl.offsetWidth) {
+          elToPosition.style.left = (parentEl.offsetWidth - elToPosition.offsetWidth-5) + 'px';
         } else {
           elToPosition.style.left = mousePos.x + 'px';
         }

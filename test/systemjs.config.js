@@ -14,10 +14,10 @@
     rxjs: { defaultExtension: 'js' }
   };
 
-  map['ng2-overlay'] = '../src';
-  packages['ng2-overlay'] = {main: 'index.ts', defaultExtension: 'ts'};
   map['ng2-overlay'] = '../dist';
   packages['ng2-overlay'] = {main: 'index.js', defaultExtension: 'js'};
+  map['ng2-overlay'] = '../src';
+  packages['ng2-overlay'] = {main: 'index.ts', defaultExtension: 'ts'};
 
   System.config({
     transpiler: 'typescript', //use typescript for compilation
