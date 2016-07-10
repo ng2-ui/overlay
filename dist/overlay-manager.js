@@ -19,12 +19,15 @@ var OverlayManager = (function () {
     };
     OverlayManager.prototype.open = function (arg, event) {
         var overlay = typeof arg === 'string' ? this.overlays[arg] : arg;
-        overlay.element.style.display = overlay.position.inside ? 'flex' : 'block';
-        overlay.positionIt(event);
+        if (!overlay.opened) {
+            overlay.positionIt(event);
+            overlay.opened = true;
+        }
     };
     OverlayManager.prototype.close = function (arg) {
         var overlay = typeof arg === 'string' ? this.overlays[arg] : arg;
         overlay.element.style.display = 'none';
+        overlay.opened = false;
     };
     OverlayManager = __decorate([
         core_1.Injectable(), 

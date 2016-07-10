@@ -8,11 +8,14 @@ export class Overlay {
   id: string;
   element: HTMLElement;
   windowOverlay: boolean;
+  opened: boolean;
+  type: string;  //tooltip, menu, popup
   position: any; //vertical, horizontal, inside
 
   constructor(el, options?: any) {
     options = options || {};
     this.id = options.id;
+    this.type = options.type;
     if (!this.id) { throw "Invalid overlay id"}
     this.element = el;  // overlay wrapper element with table dsplay
     this.windowOverlay = options.windowOverlay;
@@ -44,6 +47,8 @@ export class Overlay {
 
   private positionItInside(position) {
 
+    this.element.style.display = 'flex';
+    
     //top / left positioning
     if (this.windowOverlay) {
       this.element.style.position = 'fixed';
@@ -106,36 +111,36 @@ export class Overlay {
       width:  parentEl.offsetWidth  + 'px',
       height: parentEl.offsetHeight + 'px'
     });
+    
+    this.element.style.display = 'block';
 
     let elToPosition: HTMLElement = <HTMLElement>(this.element.children[0]);
     elToPosition.style.position = 'absolute';
     elToPosition.style.pointerEvents = 'auto';
 
-    let childrenElBCR = elToPosition.getBoundingClientRect();
-    let contentsWidth = childrenElBCR.width, contentsHeight = childrenElBCR.height;
     switch (position.vertical) {
       case Overlay.TOP:
-        elToPosition.style.top = (contentsHeight * -1) +'px'; break;
+        elToPosition.style.bottom = this.element.offsetHeight +'px'; break;
       case Overlay.BOTTOM:
-        elToPosition.style.bottom = (contentsHeight * -1) + 'px'; break;
+        elToPosition.style.top = this.element.offsetHeight + 'px'; break;
       case Overlay.LEFT:
-        elToPosition.style.left = (contentsWidth * -1) + 'px'; break;
+        elToPosition.style.right = this.element.offsetWidth + 'px'; break;
       case Overlay.RIGHT:
-        elToPosition.style.right = (contentsWidth * -1) + 'px'; break;
+        elToPosition.style.left = this.element.offsetWidth + 'px'; break;
     }
 
     switch (position.horizontal) {
       case Overlay.CENTER:
-        elToPosition.style.left =  (parentEl.offsetWidth - contentsWidth) / 2 + 'px';
+        elToPosition.style.left =  (this.element.offsetWidth - elToPosition.offsetWidth) / 2 + 'px';
         break;
       case Overlay.LEFT:  elToPosition.style.left =  '0'; break;
       case Overlay.RIGHT: elToPosition.style.right = '0'; break;
       case Overlay.TOP: elToPosition.style.top = '0'; break;
       case Overlay.BOTTOM: elToPosition.style.bottom = '0'; break;
       case Overlay.CURSOR:
-        let mousePos = Util.getMousePositionInElement(<MouseEvent>event, parentEl);
-        if ( (mousePos.x + elToPosition.offsetWidth) > parentEl.offsetWidth) {
-          elToPosition.style.left = (parentEl.offsetWidth - elToPosition.offsetWidth-5) + 'px';
+        let mousePos = Util.getMousePositionInElement(<MouseEvent>event, this.element);
+        if ( (mousePos.x + elToPosition.offsetWidth) > this.element.offsetWidth) {
+          elToPosition.style.left = (this.element.offsetWidth - elToPosition.offsetWidth-5) + 'px';
         } else if (mousePos.x < elToPosition.offsetWidth/2) {
           elToPosition.style.left = '0px';
         } else {

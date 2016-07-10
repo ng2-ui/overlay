@@ -9,6 +9,7 @@ export declare class Overlay {
     id: string;
     element: HTMLElement;
     windowOverlay: boolean;
+    opened: boolean;
     position: any;
     constructor(el: any, options?: any);
     positionIt(event?: Event): void;

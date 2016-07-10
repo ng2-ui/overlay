@@ -13,8 +13,8 @@ General Solution For Angular2 Overlay Elements
 
 2. add `map` and `packages` to your `systemjs.config.js`
 
-        map['datetime-picker'] = 'node_modules/ng2-overlay';
-        packages['datetime-picker'] = { main: 'dist/index.js', defaultExtension: 'js' 
+        map['ng2-overlay'] = 'node_modules/ng2-overlay';
+        packages['ng2-overlay'] = { main: 'dist/index.js', defaultExtension: 'js' 
 
 ## Usage it in your code
 

@@ -31,6 +31,7 @@ var Overlay = (function () {
         return position;
     };
     Overlay.prototype.positionItInside = function (position) {
+        this.element.style.display = 'flex';
         //top / left positioning
         if (this.windowOverlay) {
             this.element.style.position = 'fixed';
@@ -94,28 +95,27 @@ var Overlay = (function () {
             width: parentEl.offsetWidth + 'px',
             height: parentEl.offsetHeight + 'px'
         });
+        this.element.style.display = 'block';
         var elToPosition = (this.element.children[0]);
         elToPosition.style.position = 'absolute';
         elToPosition.style.pointerEvents = 'auto';
-        var childrenElBCR = elToPosition.getBoundingClientRect();
-        var contentsWidth = childrenElBCR.width, contentsHeight = childrenElBCR.height;
         switch (position.vertical) {
             case Overlay.TOP:
-                elToPosition.style.top = (contentsHeight * -1) + 'px';
+                elToPosition.style.bottom = this.element.offsetHeight + 'px';
                 break;
             case Overlay.BOTTOM:
-                elToPosition.style.bottom = (contentsHeight * -1) + 'px';
+                elToPosition.style.top = this.element.offsetHeight + 'px';
                 break;
             case Overlay.LEFT:
-                elToPosition.style.left = (contentsWidth * -1) + 'px';
+                elToPosition.style.right = this.element.offsetWidth + 'px';
                 break;
             case Overlay.RIGHT:
-                elToPosition.style.right = (contentsWidth * -1) + 'px';
+                elToPosition.style.left = this.element.offsetWidth + 'px';
                 break;
         }
         switch (position.horizontal) {
             case Overlay.CENTER:
-                elToPosition.style.left = (parentEl.offsetWidth - contentsWidth) / 2 + 'px';
+                elToPosition.style.left = (this.element.offsetWidth - elToPosition.offsetWidth) / 2 + 'px';
                 break;
             case Overlay.LEFT:
                 elToPosition.style.left = '0';
@@ -130,9 +130,9 @@ var Overlay = (function () {
                 elToPosition.style.bottom = '0';
                 break;
             case Overlay.CURSOR:
-                var mousePos = util_1.Util.getMousePositionInElement(event, parentEl);
-                if ((mousePos.x + elToPosition.offsetWidth) > parentEl.offsetWidth) {
-                    elToPosition.style.left = (parentEl.offsetWidth - elToPosition.offsetWidth - 5) + 'px';
+                var mousePos = util_1.Util.getMousePositionInElement(event, this.element);
+                if ((mousePos.x + elToPosition.offsetWidth) > this.element.offsetWidth) {
+                    elToPosition.style.left = (this.element.offsetWidth - elToPosition.offsetWidth - 5) + 'px';
                 }
                 else if (mousePos.x < elToPosition.offsetWidth / 2) {
                     elToPosition.style.left = '0px';
