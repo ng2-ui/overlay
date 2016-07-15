@@ -1,6 +1,6 @@
 {
   "name": "ng2-overlay",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Angular2 Overlay",
   "license": "MIT",
   "main": "dist/index.js",
@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsvalley/ng2-overlay.git"
+    "url": "git+https://github.com/ng2-ui/ng2-overlay.git"
   },
   "author": "Allen Kim <allenhwkim@gmail.com>",
   "bugs": {
-    "url": "https://github.com/jsvalley/ng2-overlay/issues"
+    "url": "https://github.com/ng2-ui/ng2-overlay/issues"
   },
-  "homepage": "https://github.com/jsvalley/ng2-overlay#readme",
+  "homepage": "https://github.com/ng2-ui/ng2-overlay#readme",
   "dependencies": {
     "@angular/common": "2.0.0-rc.3",
     "@angular/compiler": "2.0.0-rc.3",
