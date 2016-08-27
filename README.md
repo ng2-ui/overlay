@@ -13,32 +13,58 @@ General Solution For Angular2 Overlay Elements
 
 2. add `map` and `packages` to your `systemjs.config.js`
 
-        map['ng2-overlay'] = 'node_modules/ng2-overlay';
-        packages['ng2-overlay'] = { main: 'dist/index.js', defaultExtension: 'js' 
 
-## Usage it in your code
+        map['ng2-overlay'] = 'node_modules/ng2-overlay/dist';
+        packages['ng2-overlay'] = { main: 'index.js', defaultExtension: 'js' }
 
-1. import and add directive in your component
-
-        import { OverlayDirective, OverlayManager } from 'ng2-overlay';
-
-        @Component({
-          selector: 'my-app',
-          templateUrl: './app/app.tpl.html',
-          providers: [OverlayManager],
-          directives: [OverlayDirective]
+3. import Ng2OverlayModule to your AppModule
+        import { NgModule } from '@angular/core';
+        import { FormsModule } from "@angular/forms";
+        import { BrowserModule  } from '@angular/platform-browser';
+        import { AppComponent } from './app.component';
+        import { Ng2OverlayModule } from 'ng2-overlay';
+        
+        @NgModule({
+          imports: [BrowserModule, FormsModule, Ng2OverlayModule],
+          declarations: [AppComponent],
+          bootstrap: [ AppComponent ]
         })
-        export class AppComponent {
-          constructor(public overlayManager: OverlayManager) {}
-        }
+        export class AppModule { }
 
+For full example, please check out `test` directory to see the example of;
 
-2. You are ready. use it in your template
+  - `systemjs.config.js`
+  - `app.module.ts`
+  -  and `app.component.ts`.
+  
+## Usage it in your code
+ You are ready. use it in your template
 
         <div id="window-loading" jui-overlay-of="window">
           Loading...
         </div>
         <button (click)="overlayManager.open('window-loading')">Show Loading For Window</button>
+
+## **ng2-ui** welcomes new members and contributors
+
+This module is only improved and maintained by contributors like you.
+
+As a contributor, it's NOT required to be skilled in Javascript nor Angular2. 
+You are only to be open-minded and interested in helping others.
+As a contributor, you do following;
+
+  * Updating README.md
+  * Improving code comments
+  * Answering issues and building FAQ
+  * Documentation
+  * Translation
+
+In result of your active contribution, you will be listed as a core contributor
+on https://ng2-ui.github.io, and a member of ng2-ui too.
+
+If you are interested in becoming a contributor and/or a member of ng-ui,
+please send me email to `allenhwkim AT gmail.com` with your github id. 
+
 
 
 ## attributes
