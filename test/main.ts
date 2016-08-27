@@ -1,8 +1,8 @@
-// Imports for loading & configuring the in-memory web api
-import {provide, Type}    from '@angular/core';
+// The browser platform with a compiler
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-// The usual bootstrapping imports
-import { bootstrap }      from '@angular/platform-browser-dynamic';
-import { AppComponent }   from './app.component';
+// The app module
+import { AppModule } from './app.module';
 
-bootstrap(<Type>AppComponent, []);
+// Compile and launch the module
+platformBrowserDynamic().bootstrapModule(AppModule);
