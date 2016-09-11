@@ -15,7 +15,7 @@ General Solution For Angular2 Overlay Elements
 
 
         map['ng2-overlay'] = 'node_modules/ng2-overlay/dist';
-        packages['ng2-overlay'] = { main: 'index.js', defaultExtension: 'js' }
+        packages['ng2-overlay'] = { main: 'ng2-overlay.umd.js', defaultExtension: 'js' }
 
 3. import Ng2OverlayModule to your AppModule
         import { NgModule } from '@angular/core';

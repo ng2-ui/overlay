@@ -1,4 +1,5 @@
 import {Component, Type} from '@angular/core'
+//noinspection TypeScriptCheckImport
 import {OverlayManager} from "ng2-overlay";
 
 @Component({
