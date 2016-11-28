@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { BrowserModule  } from '@angular/platform-browser';
+import { CommonModule  } from '@angular/common';
 
 import { Overlay } from './overlay';
 import { OverlayManager } from './overlay-manager';
@@ -13,7 +13,7 @@ export {
 };
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule ],
+  imports: [ CommonModule, FormsModule ],
   declarations: [OverlayDirective],
   providers: [ OverlayManager ],
   exports: [ OverlayDirective ]
