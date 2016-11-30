@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require("@angular/forms");
-var platform_browser_1 = require('@angular/platform-browser');
+var common_1 = require('@angular/common');
 var overlay_1 = require('./overlay');
 exports.Overlay = overlay_1.Overlay;
 var overlay_manager_1 = require('./overlay-manager');
@@ -22,7 +22,7 @@ var Ng2OverlayModule = (function () {
     }
     Ng2OverlayModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
+            imports: [common_1.CommonModule, forms_1.FormsModule],
             declarations: [overlay_directive_1.OverlayDirective],
             providers: [overlay_manager_1.OverlayManager],
             exports: [overlay_directive_1.OverlayDirective]

@@ -1,6 +1,6 @@
 {
   "name": "ng2-overlay",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Angular2 Overlay",
   "license": "MIT",
   "main": "dist/ng2-overlay.umd.js",

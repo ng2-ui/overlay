@@ -1,12 +1,12 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("@angular/core"), require("@angular/forms"), require("@angular/platform-browser"));
+		module.exports = factory(require("@angular/core"), require("@angular/forms"), require("@angular/common"));
 	else if(typeof define === 'function' && define.amd)
-		define(["@angular/core", "@angular/forms", "@angular/platform-browser"], factory);
+		define(["@angular/core", "@angular/forms", "@angular/common"], factory);
 	else if(typeof exports === 'object')
-		exports["ng2-overlay"] = factory(require("@angular/core"), require("@angular/forms"), require("@angular/platform-browser"));
+		exports["ng2-overlay"] = factory(require("@angular/core"), require("@angular/forms"), require("@angular/common"));
 	else
-		root["ng2-overlay"] = factory(root["@angular/core"], root["@angular/forms"], root["@angular/platform-browser"]);
+		root["ng2-overlay"] = factory(root["@angular/core"], root["@angular/forms"], root["@angular/common"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -66,7 +66,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var core_1 = __webpack_require__(1);
 	var forms_1 = __webpack_require__(2);
-	var platform_browser_1 = __webpack_require__(3);
+	var common_1 = __webpack_require__(3);
 	var overlay_1 = __webpack_require__(4);
 	exports.Overlay = overlay_1.Overlay;
 	var overlay_manager_1 = __webpack_require__(6);
@@ -78,7 +78,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    Ng2OverlayModule = __decorate([
 	        core_1.NgModule({
-	            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
+	            imports: [common_1.CommonModule, forms_1.FormsModule],
 	            declarations: [overlay_directive_1.OverlayDirective],
 	            providers: [overlay_manager_1.OverlayManager],
 	            exports: [overlay_directive_1.OverlayDirective]
