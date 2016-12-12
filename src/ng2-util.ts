@@ -1,4 +1,4 @@
-export class Util {
+export class Ng2Util {
   static getDocumentPosition(oElement: HTMLElement): any {
     let posX: number = 0, posY: number = 0;
     if(oElement.offsetParent) {

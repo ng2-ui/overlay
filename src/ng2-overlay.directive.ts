@@ -1,12 +1,12 @@
 import { Directive, ViewContainerRef, Input } from '@angular/core';
 
-import {OverlayManager} from './overlay-manager';
-import {Overlay} from './overlay';
+import { Ng2OverlayManager } from './ng2-overlay-manager';
+import { Ng2Overlay } from './ng2-overlay';
 
 @Directive({
   selector: '[ng2-overlay], [ng2-overlay-of], [ng2-overlay-position]',
 })
-export class OverlayDirective {
+export class Ng2OverlayDirective {
 
   @Input('ng2-overlay-of') overlayOf: string;
   @Input('ng2-overlay-position') overlayPosition: string;
@@ -16,7 +16,7 @@ export class OverlayDirective {
 
   constructor(
     public viewContainerRef: ViewContainerRef,
-    public overlayManager: OverlayManager
+    public overlayManager: Ng2OverlayManager
   ) {
     this.el = this.viewContainerRef.element.nativeElement;
   }
@@ -41,7 +41,7 @@ export class OverlayDirective {
   registerToOverlayManager() {
     let positionStr: string =  this.overlayPosition;
 
-    let overlay = new Overlay(this.overlayEl, {
+    let overlay = new Ng2Overlay(this.overlayEl, {
       id: this.el.id,
       windowOverlay: this.overlayOf == "window",
       position: positionStr

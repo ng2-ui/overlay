@@ -1,21 +1,11 @@
-import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
-import { CommonModule  } from '@angular/common';
-
-import { Overlay } from './overlay';
-import { OverlayManager } from './overlay-manager';
-import { OverlayDirective } from './overlay.directive';
+import { Ng2Overlay } from './ng2-overlay';
+import { Ng2OverlayManager } from './ng2-overlay-manager';
+import { Ng2OverlayDirective } from './ng2-overlay.directive';
+import { Ng2OverlayModule } from './ng2-overlay.module';
 
 export {
-  Overlay,
-  OverlayManager,
-  OverlayDirective
+  Ng2Overlay,
+  Ng2OverlayManager,
+  Ng2OverlayDirective,
+  Ng2OverlayModule
 };
-
-@NgModule({
-  imports: [ CommonModule, FormsModule ],
-  declarations: [OverlayDirective],
-  providers: [ OverlayManager ],
-  exports: [ OverlayDirective ]
-})
-export class Ng2OverlayModule {};

@@ -1,7 +1,7 @@
 # ng2-overlay
 General Solution For Angular2 Overlay Elements
 
-<a href="https://plnkr.co/edit/KOg1FW?p=preview">
+<a href="https://rawgit.com/ng2-ui/ng2-overlay/master/app/index.html">
   <img src="http://i.imgur.com/0qcxg8X.png" width="50% border="1" />
 </a>
 
@@ -20,12 +20,12 @@ General Solution For Angular2 Overlay Elements
 3. import Ng2OverlayModule to your AppModule
         import { NgModule } from '@angular/core';
         import { FormsModule } from "@angular/forms";
-        import { BrowserModule  } from '@angular/platform-browser';
+        import { CommonModule  } from '@angular/common';
         import { AppComponent } from './app.component';
         import { Ng2OverlayModule } from 'ng2-overlay';
         
         @NgModule({
-          imports: [BrowserModule, FormsModule, Ng2OverlayModule],
+          imports: [CommonModule, FormsModule, Ng2OverlayModule],
           declarations: [AppComponent],
           bootstrap: [ AppComponent ]
         })

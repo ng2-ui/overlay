@@ -1,6 +1,6 @@
-import { Util } from './util';
+import { Ng2Util } from './ng2-util';
 
-export class Overlay {
+export class Ng2Overlay {
   static TOP=11;  static MIDDLE=12; static BOTTOM=13;
   static LEFT=21; static CENTER=22; static RIGHT=23;
   static CURSOR=31;
@@ -38,8 +38,8 @@ export class Overlay {
     vertical = vertical || 'center';
     inside = (insideStr !== 'outside' || this.windowOverlay);
 
-    position.horizontal = Overlay[horizontal.toUpperCase()];
-    position.vertical = Overlay[vertical.toUpperCase()];
+    position.horizontal = Ng2Overlay[horizontal.toUpperCase()];
+    position.vertical = Ng2Overlay[vertical.toUpperCase()];
     position.inside  = inside;
 
     return position;
@@ -77,22 +77,22 @@ export class Overlay {
 
     //horizontal position
     switch (position.horizontal) {
-      case Overlay.LEFT:
+      case Ng2Overlay.LEFT:
         this.element.style.justifyContent = 'flex-start'; break;
-      case Overlay.CENTER:
+      case Ng2Overlay.CENTER:
         this.element.style.justifyContent = 'center';  break;
-      case Overlay.RIGHT:
+      case Ng2Overlay.RIGHT:
         this.element.style.justifyContent = 'flex-end'; break;
     }
 
     //vertical position
     switch (position.vertical) {
-      case Overlay.LEFT:
+      case Ng2Overlay.LEFT:
         this.element.style.alignItems = 'flex-start'; break;
-      case Overlay.CENTER:
-      case Overlay.MIDDLE:
+      case Ng2Overlay.CENTER:
+      case Ng2Overlay.MIDDLE:
         this.element.style.alignItems = 'center'; break;
-      case Overlay.RIGHT:
+      case Ng2Overlay.RIGHT:
         this.element.style.alignItems = 'flex-end'; break;
     }
 
@@ -119,26 +119,26 @@ export class Overlay {
     elToPosition.style.pointerEvents = 'auto';
 
     switch (position.vertical) {
-      case Overlay.TOP:
+      case Ng2Overlay.TOP:
         elToPosition.style.bottom = this.element.offsetHeight +'px'; break;
-      case Overlay.BOTTOM:
+      case Ng2Overlay.BOTTOM:
         elToPosition.style.top = this.element.offsetHeight + 'px'; break;
-      case Overlay.LEFT:
+      case Ng2Overlay.LEFT:
         elToPosition.style.right = this.element.offsetWidth + 'px'; break;
-      case Overlay.RIGHT:
+      case Ng2Overlay.RIGHT:
         elToPosition.style.left = this.element.offsetWidth + 'px'; break;
     }
 
     switch (position.horizontal) {
-      case Overlay.CENTER:
+      case Ng2Overlay.CENTER:
         elToPosition.style.left =  (this.element.offsetWidth - elToPosition.offsetWidth) / 2 + 'px';
         break;
-      case Overlay.LEFT:  elToPosition.style.left =  '0'; break;
-      case Overlay.RIGHT: elToPosition.style.right = '0'; break;
-      case Overlay.TOP: elToPosition.style.top = '0'; break;
-      case Overlay.BOTTOM: elToPosition.style.bottom = '0'; break;
-      case Overlay.CURSOR:
-        let mousePos = Util.getMousePositionInElement(<MouseEvent>event, this.element);
+      case Ng2Overlay.LEFT:  elToPosition.style.left =  '0'; break;
+      case Ng2Overlay.RIGHT: elToPosition.style.right = '0'; break;
+      case Ng2Overlay.TOP: elToPosition.style.top = '0'; break;
+      case Ng2Overlay.BOTTOM: elToPosition.style.bottom = '0'; break;
+      case Ng2Overlay.CURSOR:
+        let mousePos = Ng2Util.getMousePositionInElement(<MouseEvent>event, this.element);
         if ( (mousePos.x + elToPosition.offsetWidth) > this.element.offsetWidth) {
           elToPosition.style.left = (this.element.offsetWidth - elToPosition.offsetWidth-5) + 'px';
         } else if (mousePos.x < elToPosition.offsetWidth/2) {
