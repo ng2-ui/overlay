@@ -1,7 +1,16 @@
 "use strict";
-var core_1 = require('@angular/core');
-var ng2_overlay_manager_1 = require('./ng2-overlay-manager');
-var ng2_overlay_1 = require('./ng2-overlay');
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require("@angular/core");
+var ng2_overlay_manager_1 = require("./ng2-overlay-manager");
+var ng2_overlay_1 = require("./ng2-overlay");
 var Ng2OverlayDirective = (function () {
     function Ng2OverlayDirective(viewContainerRef, overlayManager) {
         this.viewContainerRef = viewContainerRef;
@@ -30,21 +39,22 @@ var Ng2OverlayDirective = (function () {
         //console.log('registering overlay', overlay);
         this.overlayManager.register(overlay);
     };
-    Ng2OverlayDirective.decorators = [
-        { type: core_1.Directive, args: [{
-                    selector: '[ng2-overlay], [ng2-overlay-of], [ng2-overlay-position]',
-                },] },
-    ];
-    /** @nocollapse */
-    Ng2OverlayDirective.ctorParameters = function () { return [
-        { type: core_1.ViewContainerRef, },
-        { type: ng2_overlay_manager_1.Ng2OverlayManager, },
-    ]; };
-    Ng2OverlayDirective.propDecorators = {
-        'overlayOf': [{ type: core_1.Input, args: ['ng2-overlay-of',] },],
-        'overlayPosition': [{ type: core_1.Input, args: ['ng2-overlay-position',] },],
-    };
     return Ng2OverlayDirective;
 }());
+__decorate([
+    core_1.Input('ng2-overlay-of'),
+    __metadata("design:type", String)
+], Ng2OverlayDirective.prototype, "overlayOf", void 0);
+__decorate([
+    core_1.Input('ng2-overlay-position'),
+    __metadata("design:type", String)
+], Ng2OverlayDirective.prototype, "overlayPosition", void 0);
+Ng2OverlayDirective = __decorate([
+    core_1.Directive({
+        selector: '[ng2-overlay], [ng2-overlay-of], [ng2-overlay-position]',
+    }),
+    __metadata("design:paramtypes", [core_1.ViewContainerRef,
+        ng2_overlay_manager_1.Ng2OverlayManager])
+], Ng2OverlayDirective);
 exports.Ng2OverlayDirective = Ng2OverlayDirective;
 //# sourceMappingURL=ng2-overlay.directive.js.map

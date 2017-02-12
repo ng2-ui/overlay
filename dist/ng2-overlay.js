@@ -1,5 +1,5 @@
 "use strict";
-var ng2_util_1 = require('./ng2-util');
+var ng2_util_1 = require("./ng2-util");
 var Ng2Overlay = (function () {
     function Ng2Overlay(el, options) {
         options = options || {};
@@ -144,14 +144,14 @@ var Ng2Overlay = (function () {
                 break;
         }
     };
-    Ng2Overlay.TOP = 11;
-    Ng2Overlay.MIDDLE = 12;
-    Ng2Overlay.BOTTOM = 13;
-    Ng2Overlay.LEFT = 21;
-    Ng2Overlay.CENTER = 22;
-    Ng2Overlay.RIGHT = 23;
-    Ng2Overlay.CURSOR = 31;
     return Ng2Overlay;
 }());
+Ng2Overlay.TOP = 11;
+Ng2Overlay.MIDDLE = 12;
+Ng2Overlay.BOTTOM = 13;
+Ng2Overlay.LEFT = 21;
+Ng2Overlay.CENTER = 22;
+Ng2Overlay.RIGHT = 23;
+Ng2Overlay.CURSOR = 31;
 exports.Ng2Overlay = Ng2Overlay;
 //# sourceMappingURL=ng2-overlay.js.map
