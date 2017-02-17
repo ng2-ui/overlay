@@ -1,7 +1,4 @@
 .idea
-test
-build.sh
 tsconfig.json
-typings.json
+tsconfig.ngc.json
 node_modules
-typings
