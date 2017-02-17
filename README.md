@@ -40,7 +40,7 @@ For full example, please check out `test` directory to see the example of;
 ## Usage it in your code
  You are ready. use it in your template
 
-        <div id="window-loading" jui-overlay-of="window">
+        <div id="window-loading" ng2-overlay-of="window">
           Loading...
         </div>
         <button (click)="overlayManager.open('window-loading')">Show Loading For Window</button>
@@ -68,14 +68,14 @@ please send me email to `allenhwkim AT gmail.com` with your github id.
 
 
 ## attributes
-  [jui-overlay], [jui-overlay-of], [jui-overlay-position]
+  [ng2-overlay], [ng2-overlay-of], [ng2-overlay-position]
 
-  * jui-overlay, Display inside overylay center-center positioned
-  * jui-overlay-of="window", Display window overlay
-  * jui-overlay-position="VERTICAL HORIZONTAL outside"
+  * ng2-overlay, Display inside overylay center-center positioned
+  * ng2-overlay-of="window", Display window overlay
+  * ng2-overlay-position="VERTICAL HORIZONTAL outside"
      e.g.,   
-     `jui-overlay-position="center center"` for loading sign  
-     `jui-overlay-position="top center outside"` for tooltip  
+     `ng2-overlay-position="center center"` for loading sign  
+     `ng2-overlay-position="top center outside"` for tooltip  
 
      * VERTICAL positions: top,  middle, or bottom
      * HORIZONTAL positions: left,  center, or right
