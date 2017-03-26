@@ -1,31 +1,29 @@
-# ng2-overlay
+# Angular(2+) Overlay
 General Solution For Angular2 Overlay Elements
 
-<a href="https://rawgit.com/ng2-ui/ng2-overlay/master/app/index.html">
+<a href="https://rawgit.com/ng2-ui/overlay/master/app/index.html">
   <img src="http://i.imgur.com/0qcxg8X.png" width="50% border="1" />
 </a>
 
 ## Install
 
-1. install ng2-overlay
+1. install overlay
 
-        $ npm install ng2-overlay
+        $ npm install overlay
 
 2. add `map` and `packages` to your `systemjs.config.js`
 
+        map['@ngui/overlay'] = 'node_modules/@ngui/overlay/dist/overlay.umd.js';
 
-        map['ng2-overlay'] = 'node_modules/ng2-overlay/dist';
-        packages['ng2-overlay'] = { main: 'ng2-overlay.umd.js', defaultExtension: 'js' }
-
-3. import Ng2OverlayModule to your AppModule
+3. import NguiOverlayModule to your AppModule
         import { NgModule } from '@angular/core';
         import { FormsModule } from "@angular/forms";
         import { CommonModule  } from '@angular/common';
         import { AppComponent } from './app.component';
-        import { Ng2OverlayModule } from 'ng2-overlay';
+        import { NguiOverlayModule } from '@ngui/overlay';
         
         @NgModule({
-          imports: [CommonModule, FormsModule, Ng2OverlayModule],
+          imports: [CommonModule, FormsModule, NguiOverlayModule],
           declarations: [AppComponent],
           bootstrap: [ AppComponent ]
         })
@@ -40,7 +38,7 @@ For full example, please check out `test` directory to see the example of;
 ## Usage it in your code
  You are ready. use it in your template
 
-        <div id="window-loading" ng2-overlay-of="window">
+        <div id="window-loading" ngui-overlay-of="window">
           Loading...
         </div>
         <button (click)="overlayManager.open('window-loading')">Show Loading For Window</button>
@@ -68,14 +66,14 @@ please send me email to `allenhwkim AT gmail.com` with your github id.
 
 
 ## attributes
-  [ng2-overlay], [ng2-overlay-of], [ng2-overlay-position]
+  [ngui-overlay], [ngui-overlay-of], [ngui-overlay-position]
 
-  * ng2-overlay, Display inside overylay center-center positioned
-  * ng2-overlay-of="window", Display window overlay
-  * ng2-overlay-position="VERTICAL HORIZONTAL outside"
+  * ngui-overlay, Display inside overylay center-center positioned
+  * ngui-overlay-of="window", Display window overlay
+  * ngui-overlay-position="VERTICAL HORIZONTAL outside"
      e.g.,   
-     `ng2-overlay-position="center center"` for loading sign  
-     `ng2-overlay-position="top center outside"` for tooltip  
+     `ngui-overlay-position="center center"` for loading sign  
+     `ngui-overlay-position="top center outside"` for tooltip  
 
      * VERTICAL positions: top,  middle, or bottom
      * HORIZONTAL positions: left,  center, or right

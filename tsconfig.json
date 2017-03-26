@@ -23,7 +23,7 @@
     "outDir": "dist",
     "baseUrl": "src",
     "paths": {
-      "ng2-overlay": ["./index"]
+      "@ngui/overlay": ["./index"]
     }
   },
   "files": [
