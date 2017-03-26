@@ -1,6 +1,14 @@
 # Angular(2+) Overlay
 General Solution For Angular2 Overlay Elements
 
+## IMPORTANT NOTICE
+
+After 0.8.0 or higher, `ng2-overlay` has been changed to `@ngui/overlay`. Here are the changes;
+
+* Module `ng2-overlay` is changed to `@ngui/overlay`.
+* Direvtive `ng2-overlay` is changed to `ngui-overlay`.
+* Class name `Ng2Overay` is changed to `NguiOverlay`.
+
 <a href="https://rawgit.com/ng2-ui/overlay/master/app/index.html">
   <img src="http://i.imgur.com/0qcxg8X.png" width="50% border="1" />
 </a>
