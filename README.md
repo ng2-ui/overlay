@@ -17,7 +17,7 @@ After 0.8.0 or higher, `ng2-overlay` has been changed to `@ngui/overlay`. Here a
 
 1. install overlay
 
-        $ npm install overlay
+        $ npm install @ngui/overlay
 
 2. add `map` and `packages` to your `systemjs.config.js`
 
