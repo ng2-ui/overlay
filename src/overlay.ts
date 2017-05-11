@@ -101,8 +101,8 @@ export class NguiOverlay {
         position: 'absolute',
         // backgroundColor: 'transparent',
         backgroundColor: 'rgba(0,0,0,0.2)',
-        top: parentEl.offsetTop + 'px',
-        left: parentEl.offsetLeft + 'px',
+        top: (!parentEl.style.position) ? parentEl.offsetTop + 'px' : '0px',
+        left: (!parentEl.style.position) ? parentEl.offsetLeft + 'px' : '0px',
         width: parentEl.offsetWidth + 'px',
         height: parentEl.offsetHeight + 'px'
       });
