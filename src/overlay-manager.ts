@@ -12,7 +12,7 @@ export class NguiOverlayManager {
     // console.log('overlay.register, OverlayManager.overlays', OverlayManager.overlays);
   }
 
-  open(arg: string | NguiOverlay, event: Event): void {
+  open(arg: string | NguiOverlay, event?: Event): void {
     let overlay: NguiOverlay = typeof arg === 'string' ? NguiOverlayManager.overlays[arg] : arg;
     if (!overlay.opened) {
       overlay.positionIt(event);
